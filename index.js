@@ -1,5 +1,5 @@
-// const User=require('../models/User.js');
-// const SocialNetwork=require('../models/SocialNetwork.js')
+const User=require('../models/User.js');
+const SocialNetwork=require('../models/SocialNetwork.js')
 
 const { Command } = require('commander');
 
@@ -8,48 +8,6 @@ const chalk = require('chalk');
 
 const program = new Command();
 
-class User {
-  constructor(name, email, password) {
-    this.name = name;
-    this.email = email;
-    this.password = password;
-    this.follows = new Set();
-  }
-
-}
-// module.exports=User;
-
-
-
-class SocialNetwork {
-  constructor() {
-    this.users = new Set();
-  }
-
-  signup(name, email, password) {
-    return Authentication.signup(name, email, password, this.users);
-  }
-
-  login(email, password) {
-    return Authentication.login(email, password, this.users);
-  }
-}
-class Authentication {
-  static login(email, password, users) {
-    for (const user of users) {
-      if (user.email === email && user.password === password) {
-        return user;
-      }
-    }
-    return null;
-  }
-
-  static signup(name, email, password, users) {
-    const newUser = new User(name, email, password);
-    users.add(newUser);
-    return newUser;
-  }
-}
 
 program
   .name('gameberry-newsfeed')

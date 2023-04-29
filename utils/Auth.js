@@ -1,3 +1,6 @@
+const User = require('../models/User');
+const users = new Set()
+
 class Authentication {
   static login(email, password, users) {
     for (const user of users) {
@@ -15,4 +18,4 @@ class Authentication {
   }
 }
 
-module.exports=Authentication
+module.exports = Authentication
