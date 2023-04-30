@@ -1,22 +1,33 @@
+
+
 class Post {
-  constructor(text, user) {
+  static idCounter = 0
+  constructor(text, author) {
+    this.id = ++Post.idCounter;
     this.text = text;
-    this.timestamp = Date.now();
+    this.timestampt = new Date();
     this.upvotes = 0;
     this.downvotes = 0;
-    this.comments = [];
-    this.user = user;
-  }
+    this.upvotedUsers = []
+    this.downvotedUsers = [];
 
-  add_comment(comment) {
-    // implement later
+    this.comments = [];
+    this.author = author;
   }
 
   upvote() {
-    // implement later
+    this.upvotes++;
+
+  }
+  downvote() {
+    this.downvote++
   }
 
-  downvote() {
-    // implement later
+  addComment(comment) {
+    this.comments.push(comment);
+
   }
+
+
 }
+module.exports = Post;

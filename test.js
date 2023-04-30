@@ -1,17 +1,32 @@
-const User = require('./User')
-const Session = require('./Session')
+const User = require('./models/User')
+const Session = require('./models/Session')
 
-// const session = new Session("remy123", "4567")
+Session.login("percy123", "1234")
 
-Session.signup("remy123", "4567")
+// Session.currentSession.follow("Tormund")
+Session.currentSession.postItem("Just setting up my app")
 
-const userSession = new Session("remy123", "4567")
-userSession.login()
 
-userSession.follow("percy123")
-userSession.follow("Tim")
 
-userSession.logout()
-userSession.follow("Meg1234")
 
-// console.log(User.users)
+// upvote post
+// Session.currentSession.upvotePost(1)
+
+// logout session
+// Session.logout()
+// Session.currentSession.upvotePost(1)
+
+Session.currentSession.postItem("Fooling around")
+
+// print newsfeed
+Session.currentSession.getNewsFeed()
+
+// Session.currentSession.upvotePost(1)
+
+// Session.currentSession.downvotePost(1)
+
+
+
+
+
+
