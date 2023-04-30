@@ -118,11 +118,11 @@ class Session {
   }
   // add comment to a post
   comment(postId, reply) {
-    const post = this.newsfeed.filter((post) => post.id === postId)
+    const post = this.newsfeed.find((post) => post.id === postId)
     if (Session.currentSession) {
       // post.comments.push(reply);
-
-      post.addComment(reply);
+      const newComment = new Comment(reply, this.user, postId);
+      post.addComment(newComment);
       console.log(`User ${this.user.username} commented on the post with ID ${post.id}`);
     } else {
       console.error("User not logged in");

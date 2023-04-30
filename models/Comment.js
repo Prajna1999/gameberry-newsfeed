@@ -1,21 +1,27 @@
 class Comment {
+  static commentId = 0;
   constructor(text, user, postId) {
-    this.id = Math.floor(Math.random() * 1000);
+    this.id = ++Comment.commentId;
     this.text = text;
-    this.user = user;
-    this.timestamp = Date.now();
-    this.postId = postId;
+    this.timestamp = new Date();
     this.upvotes = 0;
     this.downvotes = 0;
+    this.user = user;
+    this.postId =postId;
+    this.replies = [];
   }
 
   upvote() {
-    // Increment the upvotes for the comment
+    this.upvotes++;
   }
 
   downvote() {
-    // Decrement the downvotes for the comment
+    this.downvotes++;
+  }
+
+  addReply(text, user, feed_item) {
+    const reply = new Comment(text, user, feed_item);
+    this.replies.push(reply);
   }
 }
-
 module.exports = Comment;
