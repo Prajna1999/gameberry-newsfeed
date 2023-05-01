@@ -18,12 +18,19 @@ Session.currentSession.postItem("Just setting up my app")
 
 Session.currentSession.postItem("Fooling around")
 
+
+
+
+
+Session.currentSession.upvotePost(1)
+
+Session.currentSession.comment(1, "I am a comment")
+
+// reply on a comment
+Session.currentSession.addReply(1, "I am a reply", 1)
+
 // print newsfeed
 Session.currentSession.getNewsFeed()
-
-// Session.currentSession.upvotePost(1)
-
-// Session.currentSession.downvotePost(1)
 
 
 

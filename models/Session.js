@@ -1,5 +1,6 @@
 const User = require('./User');
 const Post = require('./Post');
+const Comment = require('./Comment')
 
 class Session {
 
@@ -9,6 +10,7 @@ class Session {
     this.user = user
     this.isLoggedin = false;
     this.newsfeed = [];
+    this.comments = []
   }
 
   static login(username, password) {
@@ -128,8 +130,31 @@ class Session {
       console.error("User not logged in");
     }
   }
+
+  // reply to a comment on a post
+  addReply(commentId, replyText, postId) {
+    if (!Session.currentSession) {
+      console.log("You must be logged in to reply to a comment");
+      return;
+    }
+    const currentUser = Session.currentSession.user;
+    // const comment = this.comments.find((c) => c.id === commentId);
+    const post = this.newsfeed.find(post => post.id === postId);
+    const comment = post.comments.find(comment => comment.id === commentId);
+    if (!comment) {
+      console.log(`Comment with id ${commentId} not found`);
+      return;
+    }
+    const reply = new Comment(replyText, currentUser, commentId);
+
+    // comment.addReply(reply.text);
+    comment.replies.push(reply);
+    console.log(`${reply.text} added to comment with id ${commentId}`);
+  }
+
+
   //get news feed sorted by some properties
-  // we are using default properties 
+  // we are using default params
 
   getNewsFeed(sortBy = "mostRecent") {
     if (Session.currentSession) {

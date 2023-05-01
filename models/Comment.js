@@ -6,8 +6,8 @@ class Comment {
     this.timestamp = new Date();
     this.upvotes = 0;
     this.downvotes = 0;
-    this.user = user;
-    this.postId =postId;
+    this.user = user.username;
+    this.postId = postId;
     this.replies = [];
   }
 
@@ -19,9 +19,9 @@ class Comment {
     this.downvotes++;
   }
 
-  addReply(text, user, feed_item) {
-    const reply = new Comment(text, user, feed_item);
-    this.replies.push(reply);
-  }
+  // addReply(reply) {
+  //   // const reply = new Comment(text, user, feed_item);
+  //   this.replies.push(reply);
+  // }
 }
 module.exports = Comment;
